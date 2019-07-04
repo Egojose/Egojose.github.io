@@ -21,3 +21,26 @@ function validate(new_number, marray) {//entra el mnumero del user y lo revisa
         haveFourDigits(new_number, secret_number);
     };
 };
+
+function haveFourDigits(new_number, secret_number) {
+    if (secret_number.toString() !== new_number.toString()) { //si el numero es diferentes del secreto se mete en la tabla
+        var fijas = 0;
+        var picas = 0;
+        for (var i = 0; i < new_number.length; i++) {
+            if (new_number[i] === secret_number[i]) {
+                fijas += 1;
+            }; //encuentra el numero de fijas
+            if ((secret_number.includes(new_number[i]) && (new_number[i] !== secret_number[i]))) {
+                picas += 1;
+            }; //encuentra el numero de picas
+        };
+        $('tbody').prepend('<tr><td>' + new_number + '<td>' + picas + '<td>' + fijas);
+        $('#new-number').val('');
+    } else {
+        $('.main').hide();
+        $('.winner').show();
+        $('#new-game').on('click', function () {
+            location.reload();
+        });
+    };
+};
