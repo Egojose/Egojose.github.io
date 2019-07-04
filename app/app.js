@@ -12,9 +12,9 @@ var numbers = [0,1,2,3,4,5,6,7,8,9];
 var secret_number = shuffleArray(numbers);
 console.log( secret_number ); //Cada que se cargue la pag aparece un num random
 
-function validate(new_number, marray) {//entra el mnumero del user y lo revisa
+function validate(new_number, newArray) {//entra el mnumero del user y lo revisa
     var isnum = /^\d+$/.test(new_number); //comprueba q lo escrito sean numeros
-    if ((new_number.length != 4) || (marray[0] === marray[1] || marray[1] === marray[2] || marray[2] === marray[3] || marray[3] === marray[4]) || (isnum === false)) {
+    if ((new_number.length != 4) || (newArray[0] === newArray[1] || newArray[1] === newArray[2] || newArray[2] === newArray[3] || newArray[3] === newArray[4]) || (isnum === false)) {
         $('.error').css("color", "red");
     } else {
         $('.error').css("color", "white");
@@ -44,3 +44,13 @@ function haveFourDigits(new_number, secret_number) {
         });
     };
 };
+
+$('#new-number').keyup(function (e) {
+    if (e.which === 13) {
+        const new_number = $(this).val();
+        const array = new_number.split('');
+        const newArray = array.sort();
+        console.log("oprimes enter");
+        validate(new_number, newArray);
+    }
+});
