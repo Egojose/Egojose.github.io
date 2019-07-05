@@ -16,6 +16,7 @@ function validate(new_number, newArray) {//entra el mnumero del user y lo revisa
     var isnum = /^\d+$/.test(new_number); //comprueba q lo escrito sean numeros
     if ((new_number.length != 4) || (newArray[0] === newArray[1] || newArray[1] === newArray[2] || newArray[2] === newArray[3] || newArray[3] === newArray[4]) || (isnum === false)) {
         $('.error').css("color", "red");
+        alert('Recuerda que deben ser 4 digitos diferentes!')
     } else {
         $('.error').css("color", "white");
         haveFourDigits(new_number, secret_number);
