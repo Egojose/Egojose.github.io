@@ -35,7 +35,7 @@ function haveFourDigits(new_number, secret_number) {
                 picas += 1;
             }; //encuentra el numero de picas
         };
-        $('tbody').prepend('<tr><td>' + new_number + '<td>' + picas + '<td>' + fijas);
+        $('tbody').append('<tr><td>' + new_number + '<td>' + picas + '<td>' + fijas);
         $('#new-number').val('');
     } else {
         $('.main').hide();
